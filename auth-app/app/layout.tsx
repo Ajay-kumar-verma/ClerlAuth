@@ -1,8 +1,15 @@
+import { ClerkProvider } from "@clerk/nextjs";
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
-  return children
+  return (
+    <ClerkProvider>
+      <html lang="en">
+        <body>{children}</body>
+      </html>
+     </ClerkProvider>
+  );
 }
