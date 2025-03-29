@@ -8,8 +8,11 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 
+import { Image } from "antd";
+
 export default async function page() {
   const user = await currentUser();
+  const { firstName, lastName, imageUrl } = user;
 
   return (
     <ClerkProvider>
@@ -24,7 +27,8 @@ export default async function page() {
               <UserButton />
             </SignedIn>
           </header>
-          {JSON.stringify(user)}
+            <Image width={200} src={imageUrl} />
+          {JSON.stringify({firstName, lastName})}
         </body>
       </html>
     </ClerkProvider>
